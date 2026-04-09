@@ -1,0 +1,2455 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Charlyne Wargnier--Potier — Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500&family=DM+Serif+Display:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/jsvectormap/dist/css/jsvectormap.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/jsvectormap"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jsvectormap/dist/maps/world.js"></script>
+
+    <style>
+      :root {
+        /* On conserve ton background */
+        --cream: #faf6f0;
+        --cream2: #f5ede2;
+        
+        /* Couleurs inspirées des photos (Section 1 à 4) */
+        --blue: #aed9f4;      /* Bleu ciel (Section 1) */
+        --blue2: #89c4e8;
+        --petal: #f7a8c4;     /* Rose bonbon (Section 2) */
+        --petal2: #f286ac;
+        --gold: #fce862;      /* Jaune soleil (Section 3 - Werk) */
+        --gold2: #f5d442;
+        --blush: #ff8c69;     /* Orange Corail (Section 3 - Reporting) */
+        --blush2: #f2714b;
+
+        /* Orange Corail (Inspiré de SECTION 3: REPORTING) */
+        --orange-coral: #ff8c69; 
+        --orange-coral2: #f2714b;
+
+        /* Vert Menthe (Inspiré de l'onglet .05 CREATIVE HEAD) */
+        --mint-green: #b8e6cf;
+        --mint-green2: #9cd4b8;
+        
+        /* Accents pour le texte et les lignes */
+        --ink: #1a1512;
+        --ink2: #2c2520;
+        --muted: #4a4540;
+        --muted2: #6e655e;
+        --line: rgba(26, 21, 18, 0.15);
+        
+        /* Verre pour les effets de survol */
+        --card-glass: rgba(255, 255, 255, 0.85);
+        --card-glass2: rgba(255, 255, 255, 0.95);
+        
+        /* Fontes */
+        --serif: "Cormorant Garamond", Georgia, serif;
+        --display: "DM Serif Display", Georgia, serif;
+        --sans: "DM Sans", system-ui, sans-serif;
+      }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        font-family: var(--sans);
+        color: var(--ink);
+        background-color: var(--cream);
+        overflow-x: hidden;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      img {
+        display: block;
+        max-width: 100%;
+      }
+
+      /* ── BACKGROUND ATMOSPHERE ── */
+      .bg-scene {
+        position: fixed;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+        background: linear-gradient(
+          135deg,
+          #fdf9f4 0%,
+          #faf4ec 30%,
+          #f7efe7 60%,
+          #f9f2f0 100%
+        );
+      }
+      .bg-scene::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image:
+          radial-gradient(
+            ellipse 700px 500px at 10% 20%,
+            rgba(242, 217, 204, 0.55) 0%,
+            transparent 70%
+          ),
+          radial-gradient(
+            ellipse 600px 700px at 90% 10%,
+            rgba(214, 232, 245, 0.5) 0%,
+            transparent 70%
+          ),
+          radial-gradient(
+            ellipse 500px 400px at 50% 90%,
+            rgba(247, 232, 232, 0.45) 0%,
+            transparent 70%
+          ),
+          radial-gradient(
+            ellipse 400px 300px at 80% 70%,
+            rgba(232, 213, 163, 0.3) 0%,
+            transparent 70%
+          );
+      }
+      .bg-scene::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.022'/%3E%3C/svg%3E");
+        opacity: 0.6;
+      }
+
+      /* ── SHELL ── */
+      .shell {
+        position: relative;
+        z-index: 1;
+        width: min(calc(100% - 2rem), 1340px);
+        margin: 0 auto;
+        padding-bottom: 3rem;
+      }
+
+      /* ── TOPBAR ── */
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1.1rem 0 1.3rem;
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        backdrop-filter: blur(18px) saturate(1.3);
+        -webkit-backdrop-filter: blur(18px) saturate(1.3);
+        background: linear-gradient(
+          180deg,
+          rgba(250, 246, 240, 0.9) 0%,
+          rgba(250, 246, 240, 0.6) 100%
+        );
+        border-bottom: 1px solid rgba(255, 255, 255, 0.8);
+      }
+      .brand {
+        font-family: var(--serif);
+        font-size: 2.2rem;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+        line-height: 1;
+        color: var(--ink);
+      }
+      .brand em {
+        font-style: italic;
+        color: var(--muted);
+        font-weight: 400;
+      }
+      .nav {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+        flex-wrap: wrap;
+        margin-right: 0.5rem;
+      }
+      .nav a {
+        font-family: var(--sans);
+        font-size: 0.83rem;
+        font-weight: 400;
+        color: var(--muted);
+        letter-spacing: 0.08em;
+        text-transform: lowercase;
+        padding: 0.48rem 0.9rem;
+        border-radius: 999px;
+        border: 1px solid rgba(26, 21, 18, 0.1);
+        background: rgba(255, 255, 255, 0.5);
+        transition: all 0.22s ease;
+      }
+      .nav a:hover {
+        color: var(--ink);
+        background: rgba(255, 255, 255, 0.85);
+        border-color: rgba(26, 21, 18, 0.2);
+        transform: translateY(-1px);
+      }
+
+      /* ── COLLAGE STAGE ── */
+      .stage-wrap {
+        padding-top: 1.2rem;
+      }
+      .stage {
+        position: relative;
+        height: 1120px;
+      }
+
+      /* ── PANELS ── */
+      .panel {
+        position: absolute;
+        border-radius: 24px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.75);
+        background: var(--card-glass);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        box-shadow:
+          0 4px 16px rgba(26, 21, 18, 0.06),
+          0 16px 40px rgba(26, 21, 18, 0.08),
+          inset 0 1px 0 rgba(255, 255, 255, 0.9);
+        transition:
+          transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+          box-shadow 0.3s ease;
+      }
+      .panel.clickable {
+        cursor: pointer;
+      }
+      .panel.clickable:hover {
+        transform: scale(1.025) translateY(-3px);
+        box-shadow:
+          0 8px 24px rgba(26, 21, 18, 0.1),
+          0 24px 60px rgba(26, 21, 18, 0.13),
+          inset 0 1px 0 rgba(255, 255, 255, 0.95);
+        z-index: 10;
+      }
+      .panel.clickable:hover .panel-label {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .panel-label {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 0.75rem 1rem 0.7rem;
+        background: linear-gradient(
+          0deg,
+          rgba(26, 21, 18, 0.45) 0%,
+          transparent 100%
+        );
+        color: #fff;
+        font-size: 0.72rem;
+        font-weight: 500;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        opacity: 0;
+        transform: translateY(4px);
+        transition: all 0.22s ease;
+        pointer-events: none;
+      }
+
+      /* ── PANEL POSITIONS ── */
+      .p-profile {
+        left: 0;
+        top: 0;
+        width: 21%;
+        height: 46%;
+        z-index: 2;
+      }
+      .p-about {
+        left: 23%;
+        top: 5%;
+        width: 20%;
+        height: 32%;
+        z-index: 2;
+      }
+      .p-competences {
+        left: 45%;
+        top: 0;
+        width: 16%;
+        height: 35%;
+        z-index: 2;
+      }
+      .p-parcours {
+        left: 63%;
+        top: 3%;
+        width: 20%;
+        height: 40%;
+        z-index: 2;
+      }
+      .p-projects {
+        left: 80%;
+        top: 18%;
+        width: 22%;
+        height: 42%;
+        z-index: 2;
+      }
+
+      .p-experience {
+        left: 35%;
+        top: 40%;
+        width: 27%;
+        height: 35%;
+        z-index: 1;
+      }
+      .p-erasmus {
+        left: -1% ;
+        top: 48%;
+        width: 33%;
+        height: 25%;
+        z-index: 3;
+      }
+      .p-passion {
+        left: 63%;
+        top: 56%;
+        width: 26%;
+        height: 36%;
+        z-index: 2;
+      }
+      .p-associatif {
+        left: 2%;
+        top: 71%;
+        width: 32%;
+        height: 22%;
+        z-index: 1;
+      }
+      .p-strip {
+        left: 37%;
+        top: 78%;
+        width: 24%;
+        height: 8%;
+        z-index: 4;
+      }
+
+      /* ── PROFILE CARD INTERIOR ── */
+      .profile-inner {
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          160deg,
+          #fdf4ed 0%,
+          var(--blue) 100%
+        );
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+      }
+      .profile-img-wrap {
+        flex: 1;
+        border-radius: 18px;
+        overflow: hidden;
+        background: linear-gradient(180deg, #e8d5c4 0%, #d9c5b3 100%);
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .profile-img-wrap img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .profile-foot {
+        padding-top: 0.65rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .profile-foot-text {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+      }
+      .profile-name {
+        font-family: var(--serif);
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: var(--ink2);
+        line-height: 1;
+      }
+      .profile-role {
+        font-size: 0.68rem;
+        font-weight: 400;
+        color: var(--muted);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      /* ── BOUTON CV ── */
+      .cv-btn {
+        display: block;
+        width: 100%;
+        padding: 0.5rem;
+        margin-top: 0.5rem;
+        background: rgba(26, 21, 18, 0.85);
+        color: #fff;
+        text-align: center;
+        border-radius: 8px;
+        font-size: 0.7rem;
+        font-weight: 500;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        transition: all 0.2s ease;
+        text-decoration: none;
+      }
+      .cv-btn:hover {
+        background: var(--ink);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(26, 21, 18, 0.15);
+      }
+
+      /* ── ABOUT CARD ── */
+      .about-inner {
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.9) 0%,
+          var(--petal) 100%
+        );
+        padding: 1.3rem 1.2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .about-kicker {
+        font-size: 0.65rem;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--muted2);
+        margin-bottom: 0.5rem;
+      }
+      .about-headline {
+        font-family: var(--serif);
+        font-size: clamp(1.5rem, 2.2vw, 2.2rem);
+        font-weight: 600;
+        line-height: 0.96;
+        color: var(--ink);
+      }
+      .about-headline em {
+        font-style: italic;
+        color: var(--muted);
+      }
+
+      /* ── COMPETENCES CARD ── */
+      .comp-inner {
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(95deg, #ffcead 0%, var(--orange-coral) 100%);
+        padding: 1.2rem 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+      }
+      .comp-title {
+        font-family: var(--serif);
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: var(--ink2);
+        letter-spacing: -0.01em;
+      }
+      .comp-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+        flex: 1;
+        align-content: flex-start;
+      }
+      .comp-tag {
+        font-size: 0.65rem;
+        font-weight: 500;
+        padding: 0.28rem 0.62rem;
+        border-radius: 999px;
+        letter-spacing: 0.04em;
+      }
+      /* Ajustement des tags pour le panneau Compétences */
+      .comp-tag.t1 {
+        /* Bleu ciel (Social Strategy) */
+        background: rgba(174, 217, 244, 0.8);
+        color: #1e4e6e;
+        border: 1px solid rgba(255, 255, 255, 0.4);
+      }
+      .comp-tag.t2 {
+        /* Rose (Content Production) */
+        background: rgba(247, 168, 196, 0.8);
+        color: #7a2d45;
+        border: 1px solid rgba(255, 255, 255, 0.4);
+      }
+      .comp-tag.t3 {
+        /* Vert (Académique/Menthe) */
+        background: rgba(184, 230, 207, 0.8);
+        color: #2d5a42;
+        border: 1px solid rgba(255, 255, 255, 0.4);
+      }
+      .comp-tag.t4 {
+        /* Jaune (Werk) */
+        background: rgba(252, 232, 98, 0.8);
+        color: #6b540a;
+        border: 1px solid rgba(255, 255, 255, 0.4);
+      }
+      .comp-bar {
+        height: 3px;
+        border-radius: 999px;
+        background: var(--cream2);
+        margin-top: auto;
+      }
+
+      /* ── PARCOURS CARD ── */
+      .parcours-inner {
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(170deg, #ffffff 0%, var(--mint-green) 100%);
+        padding: 1.1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      .parcours-kicker {
+        font-size: 0.62rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--muted2);
+      }
+      .parcours-timeline {
+        flex: 1;
+        position: relative;
+        padding-left: 1.1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+      }
+      .parcours-timeline::before {
+        content: "";
+        position: absolute;
+        left: 0.35rem;
+        top: 4%;
+        bottom: 4%;
+        width: 1px;
+        background: linear-gradient(
+          180deg,
+          rgba(26, 21, 18, 0.08) 0%,
+          rgba(26, 21, 18, 0.18) 50%,
+          rgba(26, 21, 18, 0.08) 100%
+        );
+      }
+      .tl-item {
+        position: relative;
+      }
+      .tl-item::before {
+        content: "";
+        position: absolute;
+        left: -1.1rem;
+        top: 0.35rem;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--mint-green2);
+        box-shadow: 0 0 0 2px rgba(156, 212, 184, 0.4);
+        border: 1.5px solid rgba(255, 255, 255, 0.9);
+
+      }
+      .tl-year {
+        font-family: var(--serif);
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: var(--ink);
+        line-height: 1;
+      }
+      .tl-label {
+        font-size: 0.65rem;
+        color: var(--muted);
+        line-height: 1.4;
+        margin-top: 0.1rem;
+      }
+
+      /* ── PROJECTS CARD ── */
+      .projects-inner {
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          200deg,
+          rgba(26, 21, 18, 0.88) 0%,
+          rgba(44, 37, 32, 0.95) 100%
+        );
+        padding: 1.1rem;
+        display: flex;
+        flex-direction: column;
+        color: rgba(255, 255, 255, 0.9);
+      }
+      .proj-kicker {
+        font-size: 0.62rem;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.45);
+        margin-bottom: 0.6rem;
+      }
+      .proj-title {
+        font-family: var(--display);
+        font-size: clamp(1.6rem, 2.5vw, 2.6rem);
+        line-height: 0.94;
+        font-weight: 400;
+        color: #fff;
+      }
+      .proj-title em {
+        font-style: italic;
+        color: rgba(255, 255, 255, 0.6);
+      }
+      .proj-list-preview {
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+        margin-top: 1rem;
+        flex: 1;
+        justify-content: center;
+      }
+      .proj-preview-item {
+        background: rgba(255, 255, 255, 0.08);
+        padding: 0.8rem 1rem;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .proj-preview-name {
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: #fff;
+      }
+      .proj-preview-tags {
+        font-size: 0.65rem;
+        color: rgba(255, 255, 255, 0.6);
+        margin-top: 0.2rem;
+      }
+
+      /* ── EXPERIENCE CARD ── */
+      .exp-inner {
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(120deg, #fff 0%, var(--blue2) 100%
+        );
+        padding: 1.1rem 1.2rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.7rem;
+      }
+      .exp-kicker {
+        font-size: 0.62rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--muted2);
+      }
+      .exp-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.55rem;
+        flex: 1;
+      }
+      .exp-item {
+        display: flex;
+        gap: 0.8rem;
+        align-items: flex-start;
+        padding: 0.65rem 0.8rem;
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.65);
+        border: 1px solid rgba(255, 255, 255, 0.8);
+      }
+      .exp-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        flex-shrink: 0;
+        margin-top: 0.28rem;
+      }
+      .exp-dot.green {
+        background: var(--mint-green2);
+      }
+      .exp-dot.blush {
+        background: var(--blush2);
+      }
+      .exp-dot.blue {
+        background: var(--blue2);
+      }
+      .exp-dot.gold {
+        background: var(--gold2);
+      }
+      
+      .exp-title-sm {
+        font-size: 0.75rem;
+        font-weight: 500;
+        color: var(--ink2);
+      }
+      .exp-sub {
+        font-size: 0.65rem;
+        color: var(--muted);
+        margin-top: 0.1rem;
+      }
+
+      /* ── ERASMUS PREVIEW ── */
+      .erasmus-preview {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        background: #d6e8f5;
+      }
+      .erasmus-preview img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .erasmus-preview::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          0deg,
+          rgba(26, 21, 18, 0.8) 0%,
+          transparent 50%
+        );
+        pointer-events: none;
+      }
+      .erasmus-city {
+        position: absolute;
+        bottom: 1.5rem;
+        left: 1.2rem;
+        font-family: var(--serif);
+        font-size: 2rem;
+        font-style: italic;
+        color: #fff;
+        z-index: 2;
+        line-height: 1;
+      }
+
+      /* ── PASSION PREVIEW ── */
+      .passion-preview {
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(145deg, #ece5df 0%, var(--gold) 100%);
+        padding: 1rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        gap: 0.5rem;
+        position: relative;
+      }
+      .passion-preview::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          0deg,
+          rgba(26, 21, 18, 0.6) 0%,
+          transparent 20%
+        );
+        pointer-events: none;
+        z-index: 1;
+      }
+      .passion-img {
+        border-radius: 12px;
+        overflow: hidden;
+        background: rgba(255, 255, 255, 0.2);
+      }
+      .passion-img:first-child {
+        grid-row: span 2;
+      }
+      .passion-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.9;
+      }
+      .passion-title {
+        position: absolute;
+        bottom: 1.2rem;
+        left: 1.2rem;
+        font-family: var(--serif);
+        font-size: 1.6rem;
+        font-style: italic;
+        color: #fff;
+        z-index: 2;
+      }
+
+      /* ── STRIP DECO ── */
+      .strip-inner {
+        width: 100%;
+        height: 100%;
+        background: var(--cream2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1.5rem;
+      }
+      .strip-word {
+        font-family: var(--serif);
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: rgba(26, 21, 18, 0.35);
+      }
+      .strip-sep {
+        width: 3px;
+        height: 3px;
+        border-radius: 50%;
+        background: rgba(26, 21, 18, 0.2);
+      }
+
+      /* ── ASSOCIATIF PREVIEW (Effet Cahier Vertical) ── */
+      .p-associatif-inner {
+        width: 100%;
+        height: 100%;
+        background-color: #fff;
+        /* Ligne rose en haut, lignes bleues verticales */
+        background-image:
+          linear-gradient(90deg, transparent 45px, rgba(242, 217, 204, 0.9) 45px, rgba(242, 217, 204, 0.9) 47px, transparent 47px),
+          repeating-linear-gradient(180deg, transparent, transparent 24px, rgba(184, 212, 237, 0.4) 24px, rgba(184, 212, 237, 0.4) 25px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+      }
+      .paper-text-vertical {
+        font-family: var(--serif);
+        font-size: clamp(2.5rem, 4vw, 3.2rem);
+        font-weight: 400;
+        font-style: italic;
+        color: rgba(26, 21, 18, 0.7);
+        /* Écriture de haut en bas, sens naturel */
+        letter-spacing: 0.05em;
+        margin-bottom: 1rem; /* Remonte légèrement le texte au dessus du fond dégradé */
+      }
+      .p-associatif-foot {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 2rem 0.5rem 1rem;
+        /* Dégradé blanc en bas pour que le sous-titre soit bien lisible sur les lignes */
+        background: linear-gradient(to top, rgba(255,255,255,1) 20%, rgba(255,255,255,0.7) 60%, transparent 100%);
+        text-align: center;
+        font-size: 0.62rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--muted);
+        z-index: 2;
+      }
+
+      /* ── FLOATING LABEL ── */
+      .float-label {
+        position: absolute;
+        font-size: 0.62rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: rgba(26, 21, 18, 0.28);
+        pointer-events: none;
+      }
+      .fl-1 {
+        right: 0;
+        top: 52%;
+        writing-mode: vertical-lr;
+        transform: translateX(1.4rem);
+      }
+
+      /* ── OVERLAY ── */
+      .overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 100;
+        display: none;
+      }
+      .overlay.open {
+        display: block;
+      }
+      .overlay-bg {
+        position: absolute;
+        inset: 0;
+        background: rgba(20, 15, 12, 0.25);
+        backdrop-filter: blur(12px) saturate(1.2);
+        -webkit-backdrop-filter: blur(12px) saturate(1.2);
+        animation: fadeIn 0.25s ease;
+      }
+      .overlay-panel {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: min(980px, calc(100% - 1.5rem));
+        max-height: 86vh;
+        overflow-y: auto;
+        background: rgba(252, 248, 244, 0.97);
+        border: 1px solid rgba(255, 255, 255, 0.85);
+        border-radius: 32px;
+        box-shadow:
+          0 32px 80px rgba(20, 15, 12, 0.22),
+          0 0 0 1px rgba(255, 255, 255, 0.6);
+        animation: slideUp 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+      .overlay-panel::-webkit-scrollbar {
+        width: 4px;
+      }
+      .overlay-panel::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      .overlay-panel::-webkit-scrollbar-thumb {
+        background: rgba(26, 21, 18, 0.15);
+        border-radius: 99px;
+      }
+      .overlay-close {
+        position: absolute;
+        top: 1.1rem;
+        right: 1.1rem;
+        width: 2.4rem;
+        height: 2.4rem;
+        border-radius: 50%;
+        border: 1px solid rgba(26, 21, 18, 0.12);
+        background: rgba(255, 255, 255, 0.75);
+        color: var(--muted);
+        font-size: 1.3rem;
+        line-height: 1;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.18s ease;
+        z-index: 5;
+      }
+      .overlay-close:hover {
+        background: #fff;
+        color: var(--ink);
+        transform: scale(1.08);
+      }
+      .overlay-body {
+        padding: 2.2rem 2.2rem 2rem;
+      }
+
+      /* ── OVERLAY INNER CONTENT ── */
+      .ov-kicker {
+        font-size: 0.68rem;
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+        color: var(--muted2);
+        margin-bottom: 0.7rem;
+      }
+      .ov-title {
+        font-family: var(--serif);
+        font-size: clamp(2.8rem, 6vw, 5rem);
+        font-weight: 600;
+        line-height: 0.92;
+        color: var(--ink);
+        margin-bottom: 1.6rem;
+        padding-right: 3rem;
+      }
+      .ov-title em {
+        font-style: italic;
+        color: var(--muted);
+      }
+      .ov-grid2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+      }
+      .ov-grid3 {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+      }
+      .ov-card {
+        background: rgba(255, 255, 255, 0.75);
+        border: 1px solid rgba(255, 255, 255, 0.85);
+        border-radius: 22px;
+        padding: 1.3rem;
+        box-shadow: 0 8px 24px rgba(26, 21, 18, 0.06);
+      }
+      .ov-card.info {
+        background: linear-gradient( rgba(255, 255, 255, 0.75)0%, var(--blue2)100%);
+      }
+      .ov-card.passion {
+        background: linear-gradient( rgba(255, 255, 255, 0.75)40%, var(--gold2)100%);
+      }
+      .ov-card p {
+        font-size: 0.9rem;
+        line-height: 1.8;
+        color: var(--muted);
+      }
+      .ov-photo {
+        background: linear-gradient(160deg, #f5e4d5 0%, #e8d0bc 100%);
+        border-radius: 22px;
+        min-height: 280px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+      .ov-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .ov-chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.65rem;
+        margin-top: 0.5rem;
+      }
+      .ov-chip {
+        font-size: 0.8rem;
+        padding: 0.55rem 1.1rem;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.8);
+        color: var(--muted);
+      }
+      .ov-chip.design {
+        background: rgba(252, 232, 98, 0.8);
+        color: #6b540a;
+        border: 1px solid rgba(255, 255, 255, 0.4);
+      }
+      .ov-chip.tech {
+        background: rgba(174, 217, 244, 0.8);
+        color: #1e4e6e;
+        border: 1px solid rgba(255, 255, 255, 0.4);
+      }
+      .ov-chip.tools {
+        background: rgba(247, 168, 196, 0.8);
+        color: #7a2d45;
+        border: 1px solid rgba(255, 255, 255, 0.4);
+      }
+      .ov-chip.soft {
+        background: rgba(184, 230, 207, 0.8);
+        color: #2d5a42;
+        border: 1px solid rgba(255, 255, 255, 0.4);
+      }
+
+      .ov-timeline {
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+      .ov-tl-item {
+        display: grid;
+        grid-template-columns: 5rem 1fr;
+        gap: 1.2rem;
+        align-items: start;
+        padding: 1rem 1.2rem;
+        background: rgba(255, 255, 255, 0.75);
+        border: 1px solid rgba(255, 255, 255, 0.85);
+        border-radius: 18px;
+        box-shadow: 0 4px 16px rgba(26, 21, 18, 0.05);
+      }
+      .ov-tl-item.academic {
+        background: linear-gradient(90deg, rgba(255, 255, 255, 0.75)0%, var(--mint-green)100%);
+      }
+      .ov-tl-item.asso {
+        background: linear-gradient(90deg, rgba(255, 255, 255, 0.75)0%, var(--petal2)100%);
+      }
+      .ov-tl-year {
+        font-family: var(--serif);
+        font-size: 2rem;
+        font-weight: 600;
+        color: var(--ink);
+        line-height: 1;
+      }
+      .ov-tl-content h4 {
+        font-size: 0.88rem;
+        font-weight: 500;
+        color: var(--ink2);
+        margin-bottom: 0.25rem;
+      }
+      .ov-tl-content p {
+        font-size: 0.82rem;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      .ov-exp-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+      .ov-exp-item {
+        display: grid;
+        grid-template-columns: 3px 1fr;
+        gap: 1rem;
+        align-items: stretch;
+        padding: 1rem 1.2rem;
+        
+        border-radius: 18px;
+      }
+      .ov-exp-item.a{
+        background: linear-gradient(90deg, rgba(255, 244, 240, 0.75)0%, var(--blush)100%);
+        border: 1px solid rgba(255, 255, 255, 0.85);
+      }
+      .ov-exp-item.b{
+        background: linear-gradient(90deg,rgba(255, 255, 255, 0.75)0%, var(--gold)100%);
+        border: 1px solid rgba(255, 255, 255, 0.85);
+      }
+      .ov-exp-item.c{
+        background: linear-gradient(90deg,rgba(255, 255, 255, 0.75)0%, var(--mint-green)100%);
+        border: 1px solid rgba(255, 255, 255, 0.85);
+      }
+      .ov-exp-item.d{
+        background: linear-gradient(90deg,rgba(255, 255, 255, 0.75)0%, var(--blue)100%);
+        border: 1px solid rgba(255, 255, 255, 0.85);
+      }
+      .ov-exp-bar {
+        border-radius: 999px;
+      }
+      .ov-exp-bar.g {
+        background: var(--blush2);
+      }
+      .ov-exp-bar.b {
+        background: var(--gold2);
+      }
+      .ov-exp-bar.y {
+        background: var(--mint-green2);
+      }
+      .ov-exp-bar.a {
+        background: var(--blue2);
+      }
+      .ov-exp-meta {
+        font-size: 0.72rem;
+        color: var(--muted2);
+        margin-bottom: 0.3rem;
+      }
+      .ov-exp-title {
+        font-size: 0.92rem;
+        font-weight: 500;
+        color: var(--ink2);
+        margin-bottom: 0.3rem;
+      }
+      .ov-exp-desc {
+        font-size: 0.82rem;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      .ov-proj-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+      }
+      a.ov-proj-card {
+        display: block;
+        text-decoration: none;
+        color: inherit;
+        border-radius: 18px;
+        overflow: hidden;
+        background: rgba(255, 255, 255, 0.75);
+        border: 1px solid rgba(255, 255, 255, 0.85);
+        transition:
+          transform 0.25s ease,
+          box-shadow 0.25s ease;
+      }
+      a.ov-proj-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 16px 32px rgba(26, 21, 18, 0.08);
+      }
+      .ov-proj-thumb {
+        aspect-ratio: 4/3;
+        background: linear-gradient(135deg, #f5e4d5 0%, #e0d4e8 100%);
+        position: relative;
+      }
+      .ov-proj-thumb.blue {
+        background: linear-gradient(135deg, #d6e8f5 0%, var(--blue2) 100%);
+      }
+      .ov-proj-thumb.sage {
+        background: linear-gradient(135deg, #dfe8de 0%, var(--orange-coral2) 100%);
+      }
+      .ov-proj-thumb.gold {
+        background: linear-gradient(135deg, #f5ead3 0%, var(--gold2) 100%);
+      }
+      .ov-proj-thumb.petal {
+        background: linear-gradient(135deg, #f7e8e8 0%, var(--petal2) 100%);
+      }
+      .ov-proj-label {
+        position: absolute;
+        bottom: 0.6rem;
+        left: 0.6rem;
+        right: 0.6rem;
+        font-size: 0.62rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        padding: 0.3rem 0.6rem;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.8);
+        color: var(--muted);
+      }
+      .ov-proj-info {
+        padding: 0.8rem;
+      }
+      .ov-proj-name {
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: var(--ink2);
+      }
+      .ov-proj-tag {
+        font-size: 0.68rem;
+        color: var(--muted2);
+        margin-top: 0.2rem;
+      }
+
+      .erasmus-photo-card {
+        position: relative;
+        border-radius: 18px;
+        overflow: hidden;
+        height: 100%;
+        min-height: 140px;
+        box-shadow: 0 4px 12px rgba(26, 21, 18, 0.08);
+      }
+      .erasmus-photo-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+      }
+      .erasmus-photo-card:hover img {
+        transform: scale(1.05);
+      }
+      .erasmus-photo-card::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          0deg,
+          rgba(26, 21, 18, 0.7) 0%,
+          transparent 60%
+        );
+        pointer-events: none;
+      }
+      .city-caption {
+        position: absolute;
+        bottom: 1rem;
+        left: 1rem;
+        font-family: var(--serif);
+        font-size: 1.4rem;
+        font-style: italic;
+        color: #fff;
+        z-index: 2;
+        line-height: 1;
+      }
+
+      .ov-gallery-2 {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+      }
+      .jvm-tooltip {
+        font-family: var(--sans) !important;
+        background-color: var(--ink) !important;
+        border-radius: 6px !important;
+        font-size: 0.75rem !important;
+        padding: 6px 10px !important;
+      }
+
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translate(-50%, calc(-50% + 18px));
+        }
+        to {
+          opacity: 1;
+          transform: translate(-50%, -50%);
+        }
+      }
+
+      /* ── RESPONSIVE ── */
+      @media (max-width: 1060px) {
+        .stage {
+          height: 1600px;
+        }
+        .p-profile {
+          left: 0;
+          top: 0;
+          width: 30%;
+          height: 24%;
+        }
+        .p-about {
+          left: 33%;
+          top: 2%;
+          width: 30%;
+          height: 18%;
+        }
+        .p-competences {
+          left: 66%;
+          top: 0;
+          width: 34%;
+          height: 30%;
+        }
+        .p-parcours {
+          left: 0;
+          top: 26%;
+          width: 20%;
+          height: 28%;
+        }
+        .p-projects {
+          left: 22%;
+          top: 22%;
+          width: 35%;
+          height: 34%;
+        }
+        .p-experience {
+          left: 59%;
+          top: 32%;
+          width: 41%;
+          height: 26%;
+        }
+        .p-erasmus {
+          left: 40%;
+          top: 56%;
+          width: 45%;
+          height: 20%;
+          z-index: 3;
+        }
+        .p-passion {
+          left: 0;
+          top: 62%;
+          width: 35%;
+          height: 30%;
+        }
+        .p-associatif {
+          left: 88%;
+          top: 60%;
+          width: 12%;
+          height: 32%;
+        }
+        .p-strip {
+          left: 35%;
+          top: 80%;
+          width: 50%;
+          height: 6%;
+        }
+
+        .ov-grid2,
+        .ov-proj-grid {
+          grid-template-columns: 1fr;
+        }
+        .ov-grid3,
+        .ov-gallery-3 {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 700px) {
+        /* ── HEADER NETTOYÉ ── */
+        .topbar {
+          position: relative;
+          flex-direction: column;
+          align-items: center;
+          gap: 1.2rem;
+          padding: 1.5rem 0.5rem;
+          background: transparent;
+          backdrop-filter: none;
+          border-bottom: none;
+        }
+
+        .brand {
+          font-size: 1.8rem;
+          text-align: center;
+        }
+
+        .nav {
+          justify-content: center;
+          gap: 0.4rem;
+          width: 100%;
+        }
+
+        .nav a {
+          font-size: 0.75rem;
+          padding: 0.4rem 0.7rem;
+          background: rgba(255, 255, 255, 0.8);
+          border: 1px solid rgba(26, 21, 18, 0.1);
+        }
+
+        .stage {
+          display: flex !important;
+          flex-direction: column !important;
+          height: auto !important;
+          gap: 1.5rem !important;
+        }
+
+        .panel {
+          position: relative !important;
+          width: 100% !important;
+          height: auto !important;
+          top: auto !important;
+          left: auto !important;
+          transform: none !important;
+        }
+
+        /* 🎯 LE FIX POUR LA PHOTO PROFIL */
+        .p-profile {
+          max-height: 450px !important; /* Limite la hauteur totale du panneau */
+        }
+
+        .profile-inner {
+          height: auto !important;
+          display: flex !important;
+          flex-direction: column !important;
+        }
+
+        .profile-img-wrap {
+          /* On force une hauteur courte pour créer l'effet de zoom/recadrage */
+          height: 250px !important; 
+          flex: none !important; /* Empêche l'image de s'étirer */
+          width: 100% !important;
+        }
+
+        .profile-img-wrap img {
+          width: 100% !important;
+          height: 100% !important;
+          object-fit: cover !important; /* Zoom auto */
+          object-position: center 40% !important; /* Ajuste pour voir ton visage */
+        }
+
+        /* Compactage du texte sous la photo */
+        .profile-foot {
+          padding: 0.5rem 0 !important;
+        }
+
+        /* On cache les trucs qui gênent sur mobile */
+        .panel-label, .fl-1, .p-strip {
+          display: none !important;
+        }
+
+        .ov-grid2, 
+        .ov-grid3 {
+          display: block !important; /* Supprime la grille */
+          width: 100% !important;
+        }
+
+        .ov-card {
+          display: block !important;
+          width: 100% !important;
+          margin-bottom: 1.5rem !important; /* Espace vertical entre les blocs */
+          box-sizing: border-box !important;
+        }
+
+        /* Ajustement des listes de puces (tags) pour qu'elles s'adaptent à la largeur */
+        .ov-chips {
+          display: flex !important;
+          flex-wrap: wrap !important;
+          gap: 0.5rem !important;
+        }
+        
+        /* On s'assure que les photos dans la modale ne sont pas déformées */
+        .ov-photo {
+          width: 100% !important;
+          margin-bottom: 1.5rem !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="bg-scene" aria-hidden="true"></div>
+
+    <div class="shell">
+      <header class="topbar">
+        <a class="brand" href="#">Charlyne Wargnier--Potier</a>
+        <nav class="nav">
+          <a href="#" data-panel="about">à propos</a>
+          <a href="#" data-panel="competences">Compétences</a>
+          <a href="#" data-panel="parcours">académique</a>
+          <a href="#" data-panel="experience">Expérience</a>
+          <a href="#" data-panel="projects">Projets</a>
+          <a href="#" data-panel="erasmus">Erasmus</a>
+          <a href="#" data-panel="passion">Loisirs</a>
+          <a href="#" data-panel="associatif">Associatif</a>
+        </nav>
+      </header>
+
+      <div class="stage-wrap">
+        <div class="stage" aria-label="Portfolio interactif — collage visuel">
+          <div
+            class="panel p-profile clickable"
+            data-panel="info"
+            tabindex="0"
+            role="button"
+          >
+            <div class="profile-inner">
+              <div class="profile-img-wrap">
+                <img src="./img/profil.jpg" alt="Charlyne Wargnier--Potier" />
+              </div>
+              <div class="profile-foot">
+                <div class="profile-foot-text">
+                  <span class="profile-name">Charlyne</span>
+                  <span class="profile-role">Ingénieur Info.</span>
+                </div>
+                <a
+                  href="./asset/CV Charlyne Wargnier Potier Francais.pdf"
+                  download
+                  class="cv-btn"
+                  onclick="event.stopPropagation()"
+                >
+                  Télécharger mon CV
+                </a>
+              </div>
+            </div>
+            <div class="panel-label">identité & contact</div>
+          </div>
+
+          <div
+            class="panel p-about clickable"
+            data-panel="about"
+            tabindex="0"
+            role="button"
+          >
+            <div class="about-inner">
+              <div>
+                <p class="about-kicker">à propos</p>
+                <h2 class="about-headline">
+                  Ponctuelle, <em>persévérante </em><br />et méticuleuse.
+                  <br /><br />
+                  Etudiante en <em> Ingénierie du Cloud Computing </em>
+                </h2>
+              </div>
+            </div>
+            <div class="panel-label">A propos</div>
+          </div>
+
+          <div
+            class="panel p-competences clickable"
+            data-panel="competences"
+            tabindex="0"
+            role="button"
+          >
+            <div class="comp-inner">
+              <p class="about-kicker">Compétences</p>
+              <div class="comp-tags">
+                <span class="comp-tag t3">Github</span
+                ><span class="comp-tag t3">Volontaire</span
+                ><span class="comp-tag t1">Java</span
+                ><span class="comp-tag t3">Diplomate</span
+                ><span class="comp-tag t1">C</span
+                ><span class="comp-tag t4">Terraform</span
+                ><span class="comp-tag t1">Esprit d'équipe</span
+                ><span class="comp-tag t3">Ansible</span
+                ><span class="comp-tag t3">SQL/No SQL</span
+                ><span class="comp-tag t2">HTML</span
+                ><span class="comp-tag t3">CSS</span
+                ><span class="comp-tag t1">Dynamique</span
+                ><span class="comp-tag t1">JS</span
+                ><span class="comp-tag t4">Python</span
+                ><span class="comp-tag t2">Php</span
+                ><span class="comp-tag t1">Rust</span>
+              </div>
+              <div class="comp-bar"></div>
+            </div>
+            <div class="panel-label">compétences</div>
+          </div>
+
+          <div
+            class="panel p-parcours clickable"
+            data-panel="parcours"
+            tabindex="0"
+            role="button"
+          >
+            <div class="parcours-inner">
+              <p class="parcours-kicker">Académique</p>
+              <div class="parcours-timeline">
+                <div class="tl-item">
+                  <span class="tl-year">2025/26</span>
+                  <p class="tl-label">CY Tech<br />Option Cloud Computing</p>
+                </div>
+                <div class="tl-item">
+                  <span class="tl-year">2025</span>
+                  <p class="tl-label">TUKE<br />Semestre Erasmus</p>
+                </div>
+                <div class="tl-item">
+                  <span class="tl-year">2024/25</span>
+                  <p class="tl-label">Cycle Ingénieur</p>
+                </div>
+                <div class="tl-item">
+                  <span class="tl-year">2021/23</span>
+                  <p class="tl-label">Classe préparatoire</p>
+                </div>
+                <div class="tl-item">
+                  <span class="tl-year">2021</span>
+                  <p class="tl-label">
+                    Baccalauréat <br />Mathématiques Informatique
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="panel-label">académique</div>
+          </div>
+
+          <div
+            class="panel p-projects clickable"
+            data-panel="projects"
+            tabindex="0"
+            role="button"
+          >
+            <div class="projects-inner">
+              <p class="proj-kicker">projets</p>
+              <h2 class="proj-title">Derniers<br /><em>projets</em></h2>
+              <div class="proj-list-preview">
+                <div class="proj-preview-item">
+                  <p class="proj-preview-name">SkyStream</p>
+                  <p class="proj-preview-tags">
+                    Python · React · Github action
+                  </p>
+                </div>
+                <div class="proj-preview-item">
+                  <p class="proj-preview-name">Pokémon Aube&Crépuscule</p>
+                  <p class="proj-preview-tags">Python · Figma · Angular</p>
+                </div>
+                <div class="proj-preview-item">
+                  <p class="proj-preview-name">Jeu Géo</p>
+                  <p class="proj-preview-tags">JS · CI/CD</p>
+                </div>
+              </div>
+            </div>
+            <div class="panel-label">voir tous les projets</div>
+          </div>
+
+          <div
+            class="panel p-experience clickable"
+            data-panel="experience"
+            tabindex="0"
+            role="button"
+          >
+            <div class="exp-inner">
+              <p class="exp-kicker">expérience professionnelle</p>
+              <div class="exp-list">
+                <div class="exp-item">
+                  <span class="exp-dot blush"></span>
+                  <div>
+                    <p class="exp-title-sm">
+                      Alternance developpement logiciel
+                    </p>
+                    <p class="exp-sub">2025/26 — Capgemini Pau</p>
+                  </div>
+                </div>
+                <div class="exp-item">
+                  <span class="exp-dot gold"></span>
+                  <div>
+                    <p class="exp-title-sm">Stage Informatique</p>
+                    <p class="exp-sub">2024 juin - août — Alpha Langues Lons</p>
+                  </div>
+                </div>
+                <div class="exp-item">
+                  <span class="exp-dot green"></span>
+                  <div>
+                    <p class="exp-title-sm">Inventoriste</p>
+                    <p class="exp-sub">2023–24 — RGIS Pau</p>
+                  </div>
+                </div>
+                <div class="exp-item">
+                  <span class="exp-dot blue"></span>
+                  <div>
+                    <p class="exp-title-sm">Agent d'entretien</p>
+                    <p class="exp-sub">2022 juin - août — Cottages du Saleys</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="panel-label">expérience professionnelle</div>
+          </div>
+
+          <div
+            class="panel p-erasmus clickable"
+            data-panel="erasmus"
+            tabindex="0"
+            role="button"
+          >
+            <div class="erasmus-preview">
+              <img src="./img/tuke.jpg" alt="Etudiants erasmus 2025" />
+              <div class="erasmus-city">Erasmus 2025</div>
+            </div>
+            <div class="panel-label">Photos & Voyages</div>
+          </div>
+
+          <div class="panel p-associatif clickable" data-panel="associatif" tabindex="0" role="button">
+            <div class="p-associatif-inner">
+              <span class="paper-text-vertical">Associatif</span>
+            </div>
+            <div class="p-associatif-foot">Engagement & Vie Associative</div>
+          </div>
+
+          <div
+            class="panel p-passion clickable"
+            data-panel="passion"
+            tabindex="0"
+            role="button"
+          >
+            <div class="passion-preview">
+              <div class="passion-img">
+                <img src="./img/montagne.jpg" alt="Montagne enneigée" />
+              </div>
+              <div class="passion-img">
+                <img src="./img/chat.jpg" alt="Mon chat" />
+              </div>
+              <div class="passion-img">
+                <img src="./img/voyage.jpg" alt="Voyage" />
+              </div>
+              <div class="passion-title">Passions<br />& Loisirs</div>
+            </div>
+            <div class="panel-label">Passion & loisirs</div>
+          </div>
+
+          <div class="panel p-strip" aria-hidden="true">
+            <div class="strip-inner">
+              <span class="strip-sep"></span><span class="strip-word">code</span
+              ><span class="strip-sep"></span
+              ><span class="strip-word">édition</span
+              ><span class="strip-sep"></span>
+            </div>
+          </div>
+
+          
+
+          <span class="float-label fl-1" aria-hidden="true">2026</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="overlay" id="overlay" aria-hidden="true">
+      <div class="overlay-bg" data-close></div>
+      <section class="overlay-panel" role="dialog" aria-modal="true">
+        <button
+          class="overlay-close"
+          type="button"
+          data-close
+          aria-label="Fermer"
+        >
+          ×
+        </button>
+        <div class="overlay-body" id="overlay-body"></div>
+      </section>
+    </div>
+
+    <template id="tpl-info">
+      <p class="ov-kicker">contact & liens</p>
+      <h2 class="ov-title">restons<br /><em>en contact.</em></h2>
+      <div class="ov-grid2">
+        <div class="ov-card info">
+          <p
+            style="
+              font-size: 0.72rem;
+              letter-spacing: 0.18em;
+              text-transform: uppercase;
+              color: #9c9088;
+              margin-bottom: 0.8rem;
+            "
+          >
+            Coordonnées
+          </p>
+          <div style="display: flex; flex-direction: column; gap: 0.8rem">
+            <div>
+              <span
+                style="font-size: 0.75rem; color: var(--muted2); display: block"
+                >Email</span
+              ><a
+                href="mailto:c.wargnierpotier@gmail.com"
+                style="
+                  font-size: 0.95rem;
+                  font-weight: 500;
+                  color: var(--ink2);
+                  text-decoration: underline;
+                  text-underline-offset: 3px;
+                "
+                >c.wargnierpotier@gmail.com</a
+              >
+            </div>
+            <div>
+              <span
+                style="font-size: 0.75rem; color: var(--muted2); display: block"
+                >Téléphone</span
+              ><a
+                href="tel:+33612345678"
+                style="font-size: 0.95rem; font-weight: 500; color: var(--ink2)"
+                >+33 6 12 34 56 78</a
+              >
+            </div>
+            <div>
+              <span
+                style="font-size: 0.75rem; color: var(--muted2); display: block"
+                >Localisation</span
+              ><span
+                style="font-size: 0.95rem; font-weight: 500; color: var(--ink2)"
+                >Pau</span
+              >
+            </div>
+          </div>
+        </div>
+        <div class="ov-card info">
+          <p
+            style="
+              font-size: 0.72rem;
+              letter-spacing: 0.18em;
+              text-transform: uppercase;
+              color: #9c9088;
+              margin-bottom: 0.8rem;
+            "
+          >
+            Réseaux & Plateformes
+          </p>
+          <div style="display: flex; flex-direction: column; gap: 0.8rem">
+            <div>
+              <a
+                href="https://linkedin.com/in/charlyne-wargnier-potier"
+                target="_blank"
+                style="
+                  font-size: 0.95rem;
+                  font-weight: 500;
+                  color: var(--ink2);
+                  text-decoration: underline;
+                  text-underline-offset: 3px;
+                "
+                >LinkedIn</a
+              >
+            </div>
+            <div>
+              <a
+                href="https://github.com/CharlyneBoo"
+                target="_blank"
+                style="
+                  font-size: 0.95rem;
+                  font-weight: 500;
+                  color: var(--ink2);
+                  text-decoration: underline;
+                  text-underline-offset: 3px;
+                "
+                >Github</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <template id="tpl-about">
+      <p class="ov-kicker">à propos</p>
+      <h2 class="ov-title">Qui suis je ?</h2>
+      <div class="ov-grid2">
+        <div
+          class="ov-card"
+          style="
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 260px;
+          "
+        >
+          <p>
+            Étudiante ingénieure à CY Tech, en option ingénierie du Cloud
+            Computing. Je navigue entre le développement d'applications, leur
+            optimisation et leur déploiement. J'apprécie la gestion des
+            opérations de traitement ainsi que la mise en place de nouvelles
+            solutions.
+          </p>
+          <p>
+            J'ai choisi l'informatique pour sa liberté de création et son aspect
+            de réflexion. Ces deux principes rallient plusieurs centres
+            d'intérêts chez moi.
+          </p>
+          <p style="margin-top: 1rem">
+            <span
+              style="
+                font-size: 0.72rem;
+                letter-spacing: 0.18em;
+                text-transform: uppercase;
+                color: #9c9088;
+              "
+              >optimisation · back-end · front-end</span
+            >
+          </p>
+        </div>
+        <div class="ov-photo">
+          <img src="./img/profil2.jpg" alt="Charlyne Wargnier--Potier" />
+        </div>
+      </div>
+    </template>
+
+    <template id="tpl-competences">
+      <p class="ov-kicker">compétences</p>
+      <h2 class="ov-title">L'informatique<br /><em> et l'humain</em></h2>
+      <div
+        style="
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 1rem;
+          margin-bottom: 1.2rem;
+        "
+      >
+        <div class="ov-card">
+          <p
+            style="
+              font-size: 0.72rem;
+              letter-spacing: 0.18em;
+              text-transform: uppercase;
+              color: #9c9088;
+              margin-bottom: 0.8rem;
+            "
+          >
+            Langages informatique
+          </p>
+          <div class="ov-chips">
+            <span class="ov-chip tech">Github</span
+            ><span class="ov-chip tech">Java</span
+            ><span class="ov-chip tech">Terraform</span
+            ><span class="ov-chip tech">Ansible</span
+            ><span class="ov-chip tech">C</span
+            ><span class="ov-chip tech">SQL/No SQL</span
+            ><span class="ov-chip tech">HTML</span
+            ><span class="ov-chip tech">CSS</span
+            ><span class="ov-chip tech">JS</span
+            ><span class="ov-chip tech">Python</span
+            ><span class="ov-chip tech">Php</span
+            ><span class="ov-chip tech">Rust</span>
+          </div>
+        </div>
+        <div class="ov-card">
+          <p
+            style="
+              font-size: 0.72rem;
+              letter-spacing: 0.18em;
+              text-transform: uppercase;
+              color: #9c9088;
+              margin-bottom: 0.8rem;
+            "
+          >
+            Compétences humaines
+          </p>
+          <div class="ov-chips">
+            <span class="ov-chip soft">Diplomate</span
+            ><span class="ov-chip soft">Dynamique</span
+            ><span class="ov-chip soft">Esprit d'équipe</span
+            ><span class="ov-chip soft">Volontaire</span
+            ><span class="ov-chip soft">Rigoureuse</span
+            ><span class="ov-chip soft">Créative</span
+            ><span class="ov-chip soft">Autonome</span>
+          </div>
+        </div>
+          <div class="ov-card">
+            <p
+              style="
+                font-size: 0.72rem;
+                letter-spacing: 0.18em;
+                text-transform: uppercase;
+                color: #9c9088;
+                margin-bottom: 0.8rem;
+              "
+            >
+              Outils informatique
+            </p>
+            <div class="ov-chips">
+              <span class="ov-chip tools">VS Code</span>
+              <span class="ov-chip tools">IntelliJ</span>
+              <span class="ov-chip tools">Eclipse</span>
+              <span class="ov-chip tools">Office 365</span>
+              <span class="ov-chip tools">Windows</span>
+              <span class="ov-chip tools">Linux</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <template id="tpl-parcours">
+      <p class="ov-kicker">parcours</p>
+      <h2 class="ov-title">un chemin<br /><em>et des étapes...</em></h2>
+      <div class="ov-timeline">
+        <div class="ov-tl-item academic">
+          <div class="ov-tl-year">2025/26</div>
+          <div class="ov-tl-content">
+            <h4>Cy Tech — Option Ingénierie Cloud Computing</h4>
+            <p>Spécialisation en full stack et cloud. Projets tech, algorithmique, et méthodes agiles.</p>
+          </div>
+        </div>
+        <div class="ov-tl-item academic">
+          <div class="ov-tl-year">2025</div>
+          <div class="ov-tl-content">
+            <h4>TUKE - Semestre Erasmus</h4>
+            <p>Semestre d'échange culturel en Slovaquie. Apprentissage du déploiement, cryptographie et sécurisation des systèmes informatiques.</p>
+          </div>
+        </div>
+        <div class="ov-tl-item academic">
+          <div class="ov-tl-year">2023/24</div>
+          <div class="ov-tl-content">
+            <h4>Cy Tech - Cycle Ingénieur</h4>
+            <p>Découverte de base et de logique primordiale de l'ingénierie.</p>
+          </div>
+        </div>
+        <div class="ov-tl-item academic">
+          <div class="ov-tl-year">2021/23</div>
+          <div class="ov-tl-content">
+            <h4>Cy Tech - Cycle Préparatoire</h4>
+            <p>Classe préparatoire intégrée axée sur les mathématiques et l'informatique.</p>
+          </div>
+        </div>
+        <div class="ov-tl-item academic">
+          <div class="ov-tl-year">2021</div>
+          <div class="ov-tl-content">
+            <h4>Baccalauréat</h4>
+            <p>Diplôme général, mention bien. Spécialités mathématiques et informatique. Option mathématiques expertes.</p>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <template id="tpl-experience">
+      <p class="ov-kicker">expérience</p>
+      <h2 class="ov-title">apprendre<br /><em>en faisant.</em></h2>
+      <div class="ov-exp-list">
+        <div class="ov-exp-item a">
+          <div class="ov-exp-bar g"></div>
+          <div>
+            <p class="ov-exp-meta">2025/2026 — Capgemini Pau</p>
+            <p class="ov-exp-title">Alternance développement logiciel</p>
+            <p class="ov-exp-desc">
+              Développement, conception et optimisation d'applications logicielles. Intégration de solutions Cloud, participation active à l'architecture système et maintien du cycle de vie du développement dans un environnement de travail d'équipe et agile.
+            </p>
+          </div>
+        </div>
+        <div class="ov-exp-item b">
+          <div class="ov-exp-bar b"></div>
+          <div>
+            <p class="ov-exp-meta">Juin - Août 2024 — Alpha Langues Lons</p>
+            <p class="ov-exp-title">Stage Informatique</p>
+            <p class="ov-exp-desc">
+              Développement et mise à jour d'outils internes pour faciliter la gestion administrative et le traitement de données. Maintenance du parc informatique de l'entreprise et assistance logicielle aux utilisateurs.
+            </p>
+          </div>
+        </div>
+        <div class="ov-exp-item c">
+          <div class="ov-exp-bar y"></div>
+          <div>
+            <p class="ov-exp-meta">2023–2024 — RGIS Pau</p>
+            <p class="ov-exp-title">Inventoriste</p>
+            <p class="ov-exp-desc">
+              Collecte rigoureuse et traitement de données physiques d'inventaire en magasin. Développement de ma précision, de ma ponctualité et de mon efficacité au sein d'une équipe travaillant sous forte contrainte de temps (horaires décalés/nuits).
+            </p>
+          </div>
+        </div>
+        <div class="ov-exp-item d">
+          <div class="ov-exp-bar a"></div>
+          <div>
+            <p class="ov-exp-meta">Juin - Août 2022 — Cottages du Saleys (Salies de Béarn)</p>
+            <p class="ov-exp-title">Agent d'entretien</p>
+            <p class="ov-exp-desc">
+              Travail saisonnier exigeant une forte autonomie, un sens du détail et de la méticulosité. Application rigoureuse des procédures et standards d'hygiène pour assurer l'accueil des clients dans des conditions optimales.
+            </p>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <template id="tpl-projects">
+      <p class="ov-kicker">projets sélectionnés</p>
+      <h2 class="ov-title">Projets <br /><em>réalisés</em></h2>
+      <div class="ov-proj-grid">
+        <a
+          href="https://github.com/creberga/SkyStream-Tracker"
+          target="_blank"
+          class="ov-proj-card"
+          ><div class="ov-proj-thumb petal">
+            <span class="ov-proj-label">Projet de fin d'études</span>
+          </div>
+          <div class="ov-proj-info">
+            <p class="ov-proj-name">SkyStream</p>
+            <p class="ov-proj-tag">Python · React · Github action</p>
+          </div></a
+        >
+        <a
+          href="https://github.com/CharlyneBoo/pokemonAubeCrepuscule"
+          target="_blank"
+          class="ov-proj-card"
+          ><div class="ov-proj-thumb blue">
+            <span class="ov-proj-label">Web App</span>
+          </div>
+          <div class="ov-proj-info">
+            <p class="ov-proj-name">Pokémon Aube&Crépuscule</p>
+            <p class="ov-proj-tag">Python · Figma · Angular</p>
+          </div></a
+        >
+        <a
+          href="https://github.com/AntoCu/JeuGeo"
+          target="_blank"
+          class="ov-proj-card"
+          ><div class="ov-proj-thumb sage">
+            <span class="ov-proj-label">Web App</span>
+          </div>
+          <div class="ov-proj-info">
+            <p class="ov-proj-name">Jeu Géo</p>
+            <p class="ov-proj-tag">JS · CI/CD</p>
+          </div></a
+        >
+        <a
+          href="https://github.com/CharlyneBoo/flutter_enjeux"
+          target="_blank"
+          class="ov-proj-card"
+          ><div class="ov-proj-thumb gold">
+            <span class="ov-proj-label">Flutter App</span>
+          </div>
+          <div class="ov-proj-info">
+            <p class="ov-proj-name">Recherche et perspective</p>
+            <p class="ov-proj-tag">Flutter · Tiled · Figma</p>
+          </div></a
+        >
+      </div>
+    </template>
+
+    <template id="tpl-erasmus">
+      <p class="ov-kicker">mobilité internationale & exploration</p>
+      <h2 class="ov-title">Semestre<br /><em>Erasmus.</em></h2>
+      <div class="ov-grid2" style="margin-bottom: 1rem">
+        <div
+          class="ov-card"
+          style="display: flex; flex-direction: column; justify-content: center"
+        >
+          <h3
+            style="
+              font-family: var(--serif);
+              font-size: 1.5rem;
+              margin-bottom: 1rem;
+              color: var(--ink);
+            "
+          >
+            TUKE - Université technique de Košice
+          </h3>
+          <p>
+            Une expérience enrichissante en Slovaquie en 2025, axée sur la
+            découverte d'une nouvelle culture et l'apprentissage dans un
+            environnement profondément international.
+          </p>
+          <div class="ov-chips" style="margin-top: 1rem">
+            <span class="ov-chip soft">Slovaquie</span
+            ><span class="ov-chip tech">Anglais</span
+            ><span class="ov-chip design">Adaptabilité</span>
+          </div>
+        </div>
+        <div style="display: grid; grid-template-rows: 1fr 1fr; gap: 1rem">
+          <div class="erasmus-photo-card">
+            <img src="./img/kosice.jpg" alt="Košice" /><span
+              class="city-caption"
+              >Košice</span
+            >
+          </div>
+          <div class="erasmus-photo-card">
+            <img src="./img/bratislava.jpg" alt="Bratislava" /><span
+              class="city-caption"
+              >Bratislava</span
+            >
+          </div>
+        </div>
+      </div>
+      <div class="ov-gallery-2" style="margin-bottom: 1.5rem">
+        <div class="erasmus-photo-card">
+          <img src="./img/gilina.jpg" alt="Žilina" /><span class="city-caption"
+            >Žilina</span
+          >
+        </div>
+        <div class="erasmus-photo-card">
+          <img src="./img/paradis.jpg" alt="paradis" /><span
+            class="city-caption"
+            >Paradis Slovaque</span
+          >
+        </div>
+      </div>
+      <div class="ov-card" style="grid-column: span 2">
+        <p
+          style="
+            font-size: 0.72rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: #9c9088;
+            margin-bottom: 0.8rem;
+          "
+        >
+          Les pays explorés
+        </p>
+        <div
+          id="erasmus-map"
+          style="
+            width: 100%;
+            height: 350px;
+            background: #fdf9f4;
+            border-radius: 12px;
+            overflow: hidden;
+          "
+        ></div>
+      </div>
+    </template>
+
+    <template id="tpl-passion">
+      <p class="ov-kicker">en dehors du code</p>
+      <h2 class="ov-title">Passions<br /><em>& Loisirs.</em></h2>
+      <div class="ov-grid3">
+        <div class="ov-card passion">
+          <p
+            style="
+              font-size: 0.72rem;
+              letter-spacing: 0.18em;
+              text-transform: uppercase;
+              color: #9c9088;
+              margin-bottom: 0.8rem;
+            "
+          >
+            Les Chats
+          </p>
+          <p>
+            Je suis une véritable passionnée de chats. Mon propre chat (que vous
+            pouvez voir en photo dans la section précédente) occupe une grande
+            place dans mon quotidien et m'apporte beaucoup de réconfort.
+          </p>
+        </div>
+        <div class="ov-card passion">
+          <p
+            style="
+              font-size: 0.72rem;
+              letter-spacing: 0.18em;
+              text-transform: uppercase;
+              color: #9c9088;
+              margin-bottom: 0.8rem;
+            "
+          >
+            Le Ski & La Montagne
+          </p>
+          <p>
+            Passionnée par les sports d'hiver, et plus particulièrement le ski.
+            Dévaler les pistes de montagne enneigées est pour moi le meilleur
+            moyen de me ressourcer et de me dépasser.
+          </p>
+        </div>
+        <div class="ov-card passion">
+          <p
+            style="
+              font-size: 0.72rem;
+              letter-spacing: 0.18em;
+              text-transform: uppercase;
+              color: #9c9088;
+              margin-bottom: 0.8rem;
+            "
+          >
+            Voyage & Exploration
+          </p>
+          <p>
+            Le voyage est l'une de mes plus grandes passions, avec un attrait
+            particulier pour l'Europe de l'Est et les Balkans (comme la
+            Macédoine). Découvrir de nouvelles cultures est une source
+            d'inspiration inépuisable.
+          </p>
+        </div>
+      </div>
+    </template>
+
+    <template id="tpl-associatif">
+      <p class="ov-kicker">engagement et bénévolat</p>
+      <h2 class="ov-title">Expérience<br /><em>associative.</em></h2>
+
+      <div class="ov-timeline" style="margin-top: 2rem">
+        <div
+          class="ov-tl-item asso"
+          style="grid-template-columns: 5rem 1fr; padding: 1.5rem"
+        >
+          <div
+            class="ov-tl-year"
+            style="color: var(--muted); font-size: 1.5rem"
+          >
+            2024/25
+          </div>
+          <div class="ov-tl-content">
+            <h4 style="font-size: 1.1rem; color: var(--ink)">
+              Bureau des Étudiants (BDE) — Présidente
+            </h4>
+            <p style="font-size: 0.9rem; margin-top: 0.5rem">
+              Organisation logistique d'événements majeurs pour la vie étudiante
+              de CY Tech. Gestion des plannings, travail en équipe et
+              communication avec les prestataires.
+            </p>
+          </div>
+        </div>
+
+        <div
+          class="ov-tl-item asso"
+          style="grid-template-columns: 5rem 1fr; padding: 1.5rem"
+        >
+          <div
+            class="ov-tl-year"
+            style="color: var(--muted); font-size: 1.5rem"
+          >
+            2023/24
+          </div>
+          <div class="ov-tl-content">
+            <h4 style="font-size: 1.1rem; color: var(--ink)">
+              La Pau'se — Association Étudiante culinaire
+            </h4>
+            <p style="font-size: 0.9rem; margin-top: 0.5rem">
+              Responsable de la communication. Mise en place sur les réseaux
+              sociaux et design des événements.
+            </p>
+          </div>
+        </div>
+
+        <div
+          class="ov-tl-item asso"
+          style="grid-template-columns: 5rem 1fr; padding: 1.5rem"
+        >
+          <div
+            class="ov-tl-year"
+            style="color: var(--muted); font-size: 1.5rem"
+          >
+            2022/23
+          </div>
+          <div class="ov-tl-content">
+            <h4 style="font-size: 1.1rem; color: var(--ink)">
+              Bureau des Sports (BDS) — Secrétaire
+            </h4>
+            <p style="font-size: 0.9rem; margin-top: 0.5rem">
+              Gestion des documents administratifs et participation à la
+              planification des événements sportif inter et intra école.
+            </p>
+          </div>
+        </div>
+
+        <div
+          class="ov-tl-item asso"
+          style="grid-template-columns: 5rem 1fr; padding: 1.5rem"
+        >
+          <div
+            class="ov-tl-year"
+            style="color: var(--muted); font-size: 1.5rem"
+          >
+            2020
+          </div>
+          <div class="ov-tl-content">
+            <h4 style="font-size: 1.1rem; color: var(--ink)">
+              Banque Alimentaire — Bénévole
+            </h4>
+            <p style="font-size: 0.9rem; margin-top: 0.5rem">
+              Aide à la récolte de dons. Mobilisation de personnes et prise de
+              conscience.
+            </p>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <script>
+      const overlay = document.getElementById("overlay");
+      const body = document.getElementById("overlay-body");
+      let lastFocused = null;
+      let mapInstance = null;
+
+      function open(name, src) {
+        const tpl = document.getElementById("tpl-" + name);
+        if (!tpl) return;
+        body.innerHTML = "";
+        body.appendChild(tpl.content.cloneNode(true));
+        overlay.classList.add("open");
+        overlay.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+        lastFocused = src || null;
+
+        if (name === "erasmus") {
+          setTimeout(() => {
+            if (document.getElementById("erasmus-map")) {
+              mapInstance = new jsVectorMap({
+                selector: "#erasmus-map",
+                map: "world",
+                zoomButtons: true,
+                zoomOnScroll: false,
+                focusOn: {
+                  regions: [
+                    "PL",
+                    "SK",
+                    "HU",
+                    "RO",
+                    "BG",
+                    "GR",
+                    "HR",
+                    "RS",
+                    "BA",
+                    "SI",
+                    "ME",
+                    "AL",
+                    "MK",
+                    "AT",
+                    "CZ",
+                  ],
+                  animate: true,
+                },
+                regionStyle: {
+                  initial: {
+                    fill: "#e8d5c4",
+                    stroke: "#ffffff",
+                    strokeWidth: 0.5,
+                    fillOpacity: 1,
+                  },
+                  hover: { fillOpacity: 0.8, cursor: "pointer" },
+                  selected: { fill: "#7aadc4" },
+                  selectedHover: { fill: "#2a5a7a" },
+                },
+                selectedRegions: [
+                  "PL",
+                  "SK",
+                  "HU",
+                  "RO",
+                  "BG",
+                  "CZ",
+                  "AT",
+                  "MK",
+                  "ME",
+                  "AL",
+                  "RS",
+                  "TR",
+                ],
+                showTooltip: true,
+              });
+            }
+          }, 100);
+        }
+      }
+
+      function close() {
+        overlay.classList.remove("open");
+        overlay.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+        if (lastFocused) lastFocused.focus();
+        if (mapInstance) {
+          mapInstance = null;
+        }
+      }
+
+      document.querySelectorAll(".clickable").forEach((el) => {
+        el.addEventListener("click", () => open(el.dataset.panel, el));
+        el.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            open(el.dataset.panel, el);
+          }
+        });
+      });
+
+      document.querySelectorAll("[data-panel]").forEach((el) => {
+        if (el.tagName === "A") {
+          el.addEventListener("click", (e) => {
+            e.preventDefault();
+            open(el.dataset.panel, el);
+          });
+        }
+      });
+
+      overlay.addEventListener("click", (e) => {
+        if (e.target.closest("[data-close]")) close();
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && overlay.classList.contains("open")) close();
+      });
+    </script>
+  </body>
+</html>
